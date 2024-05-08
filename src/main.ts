@@ -75,7 +75,6 @@ const pacientes: Pacientes[] = [
 ];
 
 // APARTADO 1 A
-// Extraer la lista de paciente que están asignados a la especialidad de Pediatría
 
 const obtenPacientesAsignadosAPediatria = (pacientes: Pacientes[]): Pacientes[] => {
   let pacientesAsigandosAPediatria: Pacientes[] = [];
@@ -90,7 +89,6 @@ const obtenPacientesAsignadosAPediatria = (pacientes: Pacientes[]): Pacientes[] 
 console.log("Pacientes pediatria", obtenPacientesAsignadosAPediatria(pacientes));
 
 // APARTADO 1 B
-// Extraer la lista de pacientes asignados a Pediatría y que tengan una edad menor de 10 años
 
 const obtenPacientesAsignadosAPediatriaYMenorDeDiezAnios = (pacientes: Pacientes[]): Pacientes[] => {
   let pacientesAsignadosAPediatriaMenores10: Pacientes[] = [];
@@ -103,3 +101,41 @@ const obtenPacientesAsignadosAPediatriaYMenorDeDiezAnios = (pacientes: Pacientes
 };
 
 console.log("Pacientes Pediatria menores de 10 años", obtenPacientesAsignadosAPediatriaYMenorDeDiezAnios(pacientes));
+
+// APARTADO 2
+
+const activarProtocoloUrgencia = (pacientes: Pacientes[]): boolean => {
+  let activarProtocolo = false;
+
+  for (let i = 0; i < pacientes.length; i++) {
+    if (pacientes[i].frecuenciaCardiaca > 100 && pacientes[i].temperatura > 39) {
+      activarProtocolo = true;
+    }
+  }
+
+  return activarProtocolo;
+};
+
+console.log("El protocolo de urgencia esta en estado: ", activarProtocoloUrgencia(pacientes));
+
+// APARTADO 3
+
+const reasignaPacientesAMedicoFamilia = (pacientes: Pacientes[]): Pacientes[] => {
+  let pacientesReasignados: Pacientes[] = [];
+  for (let i = 0; i < pacientes.length; i++) {
+    if (pacientes[i].especialidad === "Pediatra") {
+      const pacienteReasignado: Pacientes = { ...pacientes[i], especialidad: "Medico de familia" };
+      pacientesReasignados.push(pacienteReasignado);
+    }
+  }
+  return pacientesReasignados;
+};
+
+console.log(
+  "Los pacientes reasignados de Pediatria a Medico de familia son",
+  reasignaPacientesAMedicoFamilia(pacientes)
+);
+
+console.log(pacientes);
+
+// APARTADO 4
