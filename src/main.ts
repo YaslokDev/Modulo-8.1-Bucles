@@ -139,3 +139,16 @@ console.log(
 console.log(pacientes);
 
 // APARTADO 4
+
+const HayPacientesDePediatria = (pacientes: Pacientes[]): boolean => {
+  for (let i = 0; i < pacientes.length; i++) {
+    if (pacientes[i].especialidad === "Pediatra") {
+      return false;
+    }
+  }
+  return true;
+};
+
+console.log("El Pediatra puede ir a casa: ", HayPacientesDePediatria(pacientes));
+
+// APARTADO 5
