@@ -152,3 +152,25 @@ const HayPacientesDePediatria = (pacientes: Pacientes[]): boolean => {
 console.log("El Pediatra puede ir a casa: ", HayPacientesDePediatria(pacientes));
 
 // APARTADO 5
+
+interface NumeroPacientesPorEspecialidad {
+  medicoDeFamilia: number;
+  pediatria: number;
+  cardiologia: number;
+}
+
+const cuentaPacientesPorEspecialidad = (pacientes: Pacientes[]): NumeroPacientesPorEspecialidad => {
+  let medicoDeFamilia: number = 0;
+  let pediatria: number = 0;
+  let cardiologia: number = 0;
+
+  for (let i = 0; i < pacientes.length; i++) {
+    if (pacientes[i].especialidad === "Medico de familia") medicoDeFamilia++;
+    if (pacientes[i].especialidad === "Pediatra") pediatria++;
+    if (pacientes[i].especialidad === "Cardiólogo") cardiologia++;
+  }
+
+  return { medicoDeFamilia, pediatria, cardiologia };
+};
+
+console.log("Listado de pacientes por especialidad", cuentaPacientesPorEspecialidad(pacientes));
